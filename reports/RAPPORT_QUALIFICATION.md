@@ -27,7 +27,7 @@ Le plan complet est dans `01_plan_de_test.md`. Il couvre 6 exigences fonctionnel
 | ✅ / ❌ partiel | 1 | T28 : la régression logistique est conforme, l'arbre (écarté) ne l'est pas |
 | ⚠️ Non évaluable | 1 | T30 : équité, faute d'attributs de groupe |
 
-T07 est conforme en local. La preuve sur GitHub reste à produire par l'étudiant au moment du dépôt (`07_ci_github_actions.md`).
+T07 est conforme sur GitHub : run #4 réussi, et échec volontaire correctement détecté au run #5, sur le même commit (voir § 7.5 de 07_ci_github_actions.md).
 
 ## 3. Architecture du pipeline et choix méthodologiques
 

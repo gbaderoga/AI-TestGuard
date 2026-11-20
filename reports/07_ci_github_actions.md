@@ -80,3 +80,17 @@ Méthode B vérifiée localement : **7 tests échouent**, 148 passent. Parmi eux
 * `.github/workflows/tests.yml` ;
 * une capture du run vert et une du run rouge (méthode A ou B), avec leurs URL ;
 * l'artefact `test-reports` (junit.xml, coverage.xml).
+
+## 7.5 Preuves obtenues
+
+| Preuve | Run | Déclenchement | Résultat |
+|---|---|---|---|
+| Exécution réussie | [tests #4](https://github.com/gbaderoga/AI-TestGuard/actions/runs/44655735480) | push sur `main`, commit `ef739e0` | ✅ `lint (ruff)` et `tests rapides` réussis ; `qualification complète` non déclenchée (normal, job manuel ou hebdomadaire) |
+| Échec volontaire détecté | [tests #5](https://github.com/gbaderoga/AI-TestGuard/actions/runs/44660626859) | lancement manuel (`workflow_dispatch`) avec `simulate_regression = true`, **même commit `ef739e0`** | ❌ `tests rapides` en échec (exit code 1) ; `lint` réussi |
+
+**Interprétation.** Les runs #4 et #5 portent sur le même code. Seule l'option `simulate_regression` les distingue : elle mélange les étiquettes d'entraînement. Le modèle dégradé est comparé à la baseline figée `tests/baselines/ci_baseline.json`, et les 3 tests de non-régression échouent avec le message « Régression détectée ». Tous les autres tests restent verts. La CI détecte donc précisément le défaut introduit et le signale clairement : job rouge, code de sortie non nul, message explicite.
+
+![Run réussi](preuves_ci/run_vert.png)
+![Échec volontaire détecté](preuves_ci/run_rouge.png)
+
+**Remarque.** Les deux runs affichent un avertissement de dépréciation de Node.js 20 pour les actions GitHub (`checkout`, `setup-python`, `upload-artifact`). Il est sans effet sur les résultats. Il faudra mettre à jour ces actions vers leurs versions les plus récentes quand GitHub retirera Node.js 20.
