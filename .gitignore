@@ -1,0 +1,35 @@
+# Données : jamais versionnées (licence Kaggle, volume ~150 Mo)
+data/*.csv
+data/*.zip
+!data/README.md
+
+# Modèles et artefacts lourds
+*.joblib
+*.pkl
+models/
+
+# Secrets
+.env
+.env.*
+kaggle.json
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+coverage.xml
+htmlcov/
+junit.xml
+*.egg-info/
+.venv/
+venv/
+
+# Notebooks / IDE
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store

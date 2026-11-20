@@ -1,0 +1,420 @@
+{
+  "base": {
+    "recall": 0.7789473684210526,
+    "precision": 0.7708333333333334,
+    "fpr": 0.0003883426594411396,
+    "average_precision": 0.6807867510982443,
+    "alerts": 96,
+    "ood_alerts": 8
+  },
+  "rejections": [
+    {
+      "scenario": "NaN dans V14 (1 % des lignes)",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Valeurs manquantes (567 lignes) dans : ['V14']",
+      "lignes_invalides": 567
+    },
+    {
+      "scenario": "NaN dans Amount, V1, V2 (1 %)",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Valeurs manquantes (567 lignes) dans : ['V1', 'V2', 'Amount']",
+      "lignes_invalides": 567
+    },
+    {
+      "scenario": "+inf dans Amount (1 %)",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Valeurs infinies (567 lignes) dans : ['Amount']",
+      "lignes_invalides": 567
+    },
+    {
+      "scenario": "-inf dans V3 (1 %)",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Valeurs infinies (567 lignes) dans : ['V3']",
+      "lignes_invalides": 567
+    },
+    {
+      "scenario": "Montant négatif (1 %)",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Valeurs négatives interdites dans : ['Amount']",
+      "lignes_invalides": 567
+    },
+    {
+      "scenario": "Texte « N/A » dans V10 (1 %)",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Type non numérique pour : ['V10']",
+      "lignes_invalides": 567
+    },
+    {
+      "scenario": "Colonne V28 absente",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Colonnes requises absentes : ['V28']",
+      "lignes_invalides": 56746
+    },
+    {
+      "scenario": "Colonne renommée (Amount -> amount)",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Colonnes requises absentes : ['Amount']",
+      "lignes_invalides": 56746
+    },
+    {
+      "scenario": "Colonne V1 dupliquée",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Colonnes dupliquées : ['V1']",
+      "lignes_invalides": 56746
+    },
+    {
+      "scenario": "Lot vide",
+      "attendu": "rejet",
+      "obtenu": "rejeté",
+      "message": "Le jeu de données est vide.",
+      "lignes_invalides": 56746
+    },
+    {
+      "scenario": "Colonne supplémentaire merchant_id",
+      "attendu": "traitement",
+      "obtenu": "traité (colonne ignorée + avertissement)",
+      "message": null,
+      "lignes_invalides": 0
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": "Référence (test non perturbé)",
+      "attendu": "—",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6807867510982443,
+      "alerts": 96,
+      "ood_alerts": 8
+    },
+    {
+      "scenario": "Amount × 10 (toutes les lignes)",
+      "attendu": "traitement + alerte hors domaine",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6803343732047401,
+      "alerts": 96,
+      "ood_alerts": 153,
+      "mean_abs_dproba": 0.009863506464619367,
+      "p99_abs_dproba": 0.05050068795690842,
+      "max_abs_dproba": 0.05230897868425122,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    },
+    {
+      "scenario": "Amount × 100",
+      "attendu": "traitement + alerte hors domaine",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6799983221867832,
+      "alerts": 96,
+      "ood_alerts": 5920,
+      "mean_abs_dproba": 0.02150089132933663,
+      "p99_abs_dproba": 0.1018691376619288,
+      "max_abs_dproba": 0.1043338486707776,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    },
+    {
+      "scenario": "Amount = 2 × max d'entraînement (39313)",
+      "attendu": "traitement + alerte hors domaine",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6811106751952539,
+      "alerts": 96,
+      "ood_alerts": 56746,
+      "mean_abs_dproba": 0.038431993503766644,
+      "p99_abs_dproba": 0.19743676984518346,
+      "max_abs_dproba": 0.23606126570690866,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    },
+    {
+      "scenario": "Amount = 1e9",
+      "attendu": "traitement + alerte hors domaine",
+      "recall": 0.7894736842105263,
+      "precision": 0.7425742574257426,
+      "fpr": 0.000458950415703165,
+      "average_precision": 0.6807362212738893,
+      "alerts": 101,
+      "ood_alerts": 56746,
+      "mean_abs_dproba": 0.11887008997344038,
+      "p99_abs_dproba": 0.40310561381977744,
+      "max_abs_dproba": 0.43924349429872156,
+      "class_flips": 5,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 5
+    },
+    {
+      "scenario": "Bruit gaussien V1..V28 : σ = 1% de l'écart-type",
+      "attendu": "sensibilité mesurée",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6807392373963463,
+      "alerts": 96,
+      "ood_alerts": 7,
+      "mean_abs_dproba": 0.0010523620288949026,
+      "p99_abs_dproba": 0.009166612260488975,
+      "max_abs_dproba": 0.02312770373021522,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    },
+    {
+      "scenario": "Bruit gaussien V1..V28 : σ = 5% de l'écart-type",
+      "attendu": "sensibilité mesurée",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6802090803536817,
+      "alerts": 96,
+      "ood_alerts": 36,
+      "mean_abs_dproba": 0.005238520882600799,
+      "p99_abs_dproba": 0.04654513778038023,
+      "max_abs_dproba": 0.1076057711586586,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    },
+    {
+      "scenario": "Bruit gaussien V1..V28 : σ = 10% de l'écart-type",
+      "attendu": "sensibilité mesurée",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6797150533680065,
+      "alerts": 96,
+      "ood_alerts": 305,
+      "mean_abs_dproba": 0.010429935951791917,
+      "p99_abs_dproba": 0.09136874167527582,
+      "max_abs_dproba": 0.2232305919934479,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    },
+    {
+      "scenario": "Bruit gaussien V1..V28 : σ = 25% de l'écart-type",
+      "attendu": "sensibilité mesurée",
+      "recall": 0.7789473684210526,
+      "precision": 0.7789473684210526,
+      "fpr": 0.00037069072037563324,
+      "average_precision": 0.678616477090158,
+      "alerts": 95,
+      "ood_alerts": 2304,
+      "mean_abs_dproba": 0.026893443090642274,
+      "p99_abs_dproba": 0.23110627122140182,
+      "max_abs_dproba": 0.5202951265247351,
+      "class_flips": 3,
+      "flips_fraud_to_normal": 2,
+      "flips_normal_to_fraud": 1
+    },
+    {
+      "scenario": "Amount ± 1% (arrondi, frais, change)",
+      "attendu": "sensibilité mesurée",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6807872404847339,
+      "alerts": 96,
+      "ood_alerts": 8,
+      "mean_abs_dproba": 1.879901232009182e-05,
+      "p99_abs_dproba": 0.00015314613106450373,
+      "max_abs_dproba": 0.00022367727781613667,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    },
+    {
+      "scenario": "Amount ± 5% (arrondi, frais, change)",
+      "attendu": "sensibilité mesurée",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.680781527331271,
+      "alerts": 96,
+      "ood_alerts": 8,
+      "mean_abs_dproba": 9.464943878192359e-05,
+      "p99_abs_dproba": 0.0007779677792536108,
+      "max_abs_dproba": 0.0011262079372946765,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    },
+    {
+      "scenario": "Time ± 60 s (horodatage)",
+      "attendu": "sensibilité mesurée",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6807866014685329,
+      "alerts": 96,
+      "ood_alerts": 11,
+      "mean_abs_dproba": 1.6703274668081827e-05,
+      "p99_abs_dproba": 0.00013006712074207504,
+      "max_abs_dproba": 0.00017358637008657585,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    },
+    {
+      "scenario": "Time ± 3600 s (horodatage)",
+      "attendu": "sensibilité mesurée",
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "average_precision": 0.6809594495714305,
+      "alerts": 96,
+      "ood_alerts": 236,
+      "mean_abs_dproba": 0.000990539186405396,
+      "p99_abs_dproba": 0.007768690495803453,
+      "max_abs_dproba": 0.010437378662150443,
+      "class_flips": 0,
+      "flips_fraud_to_normal": 0,
+      "flips_normal_to_fraud": 0
+    }
+  ],
+  "boundary": {
+    "n_flips_sigma_5pct": 0,
+    "logit_margin_flipped_max": null,
+    "logit_margin_flipped_median": null,
+    "logit_margin_all_median": 11.158300172505125,
+    "share_within_logit_1": 7.048954992422373e-05
+  },
+  "drift": [
+    {
+      "scenario": "Test non perturbé (contrôle)",
+      "psi_max": 0.0005028740869652927,
+      "feature_psi_max": "V25",
+      "n_alerte": 0,
+      "n_surveiller": 0,
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "alerts": 96,
+      "class_flips": 0
+    },
+    {
+      "scenario": "Amount × 1,1 (inflation / devise)",
+      "psi_max": 0.004732965510239628,
+      "feature_psi_max": "Amount",
+      "n_alerte": 0,
+      "n_surveiller": 0,
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "alerts": 96,
+      "class_flips": 0
+    },
+    {
+      "scenario": "Amount × 1,5",
+      "psi_max": 0.1507472947354961,
+      "feature_psi_max": "Amount",
+      "n_alerte": 0,
+      "n_surveiller": 1,
+      "recall": 0.7789473684210526,
+      "precision": 0.7708333333333334,
+      "fpr": 0.0003883426594411396,
+      "alerts": 96,
+      "class_flips": 0
+    },
+    {
+      "scenario": "V14 décalée de +0,5 σ",
+      "psi_max": 0.4092974504048859,
+      "feature_psi_max": "V14",
+      "n_alerte": 1,
+      "n_surveiller": 0,
+      "recall": 0.7684210526315789,
+      "precision": 0.776595744680851,
+      "fpr": 0.00037069072037563324,
+      "alerts": 94,
+      "class_flips": 2
+    },
+    {
+      "scenario": "V4, V11, V12, V14 décalées de 1 σ",
+      "psi_max": 1.5837077935011172,
+      "feature_psi_max": "V12",
+      "n_alerte": 4,
+      "n_surveiller": 0,
+      "recall": 0.7894736842105263,
+      "precision": 0.5597014925373134,
+      "fpr": 0.0010414644048648745,
+      "alerts": 134,
+      "class_flips": 38
+    }
+  ],
+  "temporal_validation": {
+    "train_time_range_h": [
+      0.0,
+      33.44222222222222
+    ],
+    "test_time_range_h": [
+      40.342777777777776,
+      47.99777777777778
+    ],
+    "n_test": 56746,
+    "n_test_fraud": 74,
+    "threshold": 0.9994990537192044,
+    "metrics": {
+      "n": 56746,
+      "n_fraud": 74,
+      "tp": 51,
+      "tn": 56653,
+      "fp": 19,
+      "fn": 23,
+      "accuracy": 0.9992598597257957,
+      "precision": 0.7285714285714285,
+      "recall": 0.6891891891891891,
+      "f1": 0.7083333333333334,
+      "fpr": 0.00033526256352343307,
+      "fnr": 0.3108108108108108,
+      "alert_rate": 0.0012335671236739154,
+      "roc_auc": 0.9816399632975721,
+      "average_precision": 0.7282755555377438
+    },
+    "psi_train_vs_test_top": [
+      {
+        "feature": "Time",
+        "psi": 12.433785940220965,
+        "level": "alerte"
+      },
+      {
+        "feature": "V1",
+        "psi": 1.4633009679139886,
+        "level": "alerte"
+      },
+      {
+        "feature": "V3",
+        "psi": 1.0652947900771876,
+        "level": "alerte"
+      },
+      {
+        "feature": "V28",
+        "psi": 0.7182245812784704,
+        "level": "alerte"
+      },
+      {
+        "feature": "V11",
+        "psi": 0.44577870796486796,
+        "level": "alerte"
+      }
+    ]
+  },
+  "seed": 2024
+}

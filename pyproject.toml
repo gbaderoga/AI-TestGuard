@@ -1,0 +1,37 @@
+[project]
+name = "ai-testguard"
+version = "1.0.0"
+description = "Validation, robustesse et fiabilité d'un modèle de détection de fraude bancaire"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "slow: tests longs ou nécessitant le jeu de données réel (exclus des Pull Requests)",
+]
+filterwarnings = ["error::FutureWarning"]
+
+[tool.coverage.run]
+source = ["app"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "NPY", "PD", "RUF"]
+ignore = [
+    "RUF001",  # caractères typographiques français dans les chaînes
+    "RUF002",
+    "RUF003",
+    "B023",    # lambdas paramétrées dans les tests
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["PD", "B011"]

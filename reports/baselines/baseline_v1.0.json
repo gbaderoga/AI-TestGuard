@@ -1,0 +1,46 @@
+{
+  "version": "v1.0",
+  "code_version": "1.0.0",
+  "git_commit": "non-versionné",
+  "model": "logreg",
+  "params": {
+    "C": 0.01
+  },
+  "seed": 42,
+  "threshold": 0.999392437718561,
+  "library_versions": {
+    "python": "3.13.18",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  },
+  "dataset": {
+    "source": "Kaggle mlg-ulb/creditcardfraud",
+    "sha256_csv": "76274b691b16a6c49d3f159c883398e03ccd6d1ee12d9d8ee38f4b4b98551a89",
+    "n_raw": 284807,
+    "n_fraud_raw": 492,
+    "split": "stratifié 60/20/20, doublons retirés, graine 42",
+    "n_val": 56745,
+    "n_val_fraud": 94,
+    "val_fingerprint": "6b37b98c9b09852bdaed5c9fab0b16e2cd5b8b375d591373fd440465bb739e52"
+  },
+  "metrics_val": {
+    "average_precision": 0.7905906093748996,
+    "roc_auc": 0.979743836562574,
+    "recall": 0.8617021276595744,
+    "precision": 0.7864077669902912,
+    "fpr": 0.0003883426594411396,
+    "f1": 0.8223350253807107,
+    "tp": 81,
+    "fp": 22,
+    "fn": 13
+  },
+  "tolerance": {
+    "average_precision": 0.02,
+    "roc_auc": 0.01,
+    "recall": 0.03,
+    "precision": 0.05,
+    "fpr": 0.001
+  }
+}

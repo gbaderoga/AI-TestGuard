@@ -1,0 +1,14 @@
+# Versions figées : elles font partie de la baseline de non-régression.
+numpy==2.5.3
+pandas==3.0.5
+scikit-learn==1.9.1
+scipy==1.18.1
+joblib==1.6.0
+matplotlib==3.11.2
+psutil==7.2.2
+
+# Tests et qualité
+pytest==9.1.1
+pytest-cov==7.1.0
+hypothesis==6.170.16
+ruff==0.17.6

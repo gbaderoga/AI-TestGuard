@@ -1,0 +1,277 @@
+{
+  "baseline": {
+    "version": "v1.0",
+    "code_version": "1.0.0",
+    "git_commit": "non-versionné",
+    "model": "logreg",
+    "params": {
+      "C": 0.01
+    },
+    "seed": 42,
+    "threshold": 0.999392437718561,
+    "library_versions": {
+      "python": "3.13.18",
+      "scikit-learn": "1.9.1",
+      "numpy": "2.5.3",
+      "pandas": "3.0.5",
+      "joblib": "1.6.0"
+    },
+    "dataset": {
+      "source": "Kaggle mlg-ulb/creditcardfraud",
+      "sha256_csv": "76274b691b16a6c49d3f159c883398e03ccd6d1ee12d9d8ee38f4b4b98551a89",
+      "n_raw": 284807,
+      "n_fraud_raw": 492,
+      "split": "stratifié 60/20/20, doublons retirés, graine 42",
+      "n_val": 56745,
+      "n_val_fraud": 94,
+      "val_fingerprint": "6b37b98c9b09852bdaed5c9fab0b16e2cd5b8b375d591373fd440465bb739e52"
+    },
+    "metrics_val": {
+      "average_precision": 0.7905906093748996,
+      "roc_auc": 0.979743836562574,
+      "recall": 0.8617021276595744,
+      "precision": 0.7864077669902912,
+      "fpr": 0.0003883426594411396,
+      "f1": 0.8223350253807107,
+      "tp": 81,
+      "fp": 22,
+      "fn": 13
+    },
+    "tolerance": {
+      "average_precision": 0.02,
+      "roc_auc": 0.01,
+      "recall": 0.03,
+      "precision": 0.05,
+      "fpr": 0.001
+    }
+  },
+  "candidates": {
+    "v1.1-a : régression logistique, C = 0.1 (au lieu de 0.01)": {
+      "model": "logreg",
+      "params": {
+        "C": 0.1
+      },
+      "threshold": 0.9997757494947311,
+      "metrics_val": {
+        "average_precision": 0.7897475579346832,
+        "roc_auc": 0.9801073913926892,
+        "recall": 0.8617021276595744,
+        "precision": 0.7941176470588235,
+        "fpr": 0.00037069072037563324,
+        "f1": 0.8265306122448979,
+        "tp": 81,
+        "fp": 21,
+        "fn": 13
+      },
+      "decision": "accepter",
+      "details": {
+        "average_precision": {
+          "baseline": 0.7905906093748996,
+          "current": 0.7897475579346832,
+          "degradation": 0.0008430514402163469,
+          "tolerance": 0.02,
+          "status": "accepter"
+        },
+        "roc_auc": {
+          "baseline": 0.979743836562574,
+          "current": 0.9801073913926892,
+          "degradation": -0.00036355483011518697,
+          "tolerance": 0.01,
+          "status": "accepter"
+        },
+        "recall": {
+          "baseline": 0.8617021276595744,
+          "current": 0.8617021276595744,
+          "degradation": 0.0,
+          "tolerance": 0.03,
+          "status": "accepter"
+        },
+        "precision": {
+          "baseline": 0.7864077669902912,
+          "current": 0.7941176470588235,
+          "degradation": -0.007709880068532238,
+          "tolerance": 0.05,
+          "status": "accepter"
+        },
+        "fpr": {
+          "baseline": 0.0003883426594411396,
+          "current": 0.00037069072037563324,
+          "degradation": -1.7651939065506383e-05,
+          "tolerance": 0.001,
+          "status": "accepter"
+        }
+      }
+    },
+    "v1.1-b : régression logistique sans pondération des classes": {
+      "model": "logreg",
+      "params": {
+        "C": 0.01,
+        "class_weight": null
+      },
+      "threshold": 0.013902168370571026,
+      "metrics_val": {
+        "average_precision": 0.7949110815504745,
+        "roc_auc": 0.9787500699505032,
+        "recall": 0.8936170212765957,
+        "precision": 0.6,
+        "fpr": 0.0009885085876683553,
+        "f1": 0.7179487179487181,
+        "tp": 84,
+        "fp": 56,
+        "fn": 10
+      },
+      "decision": "rejeter",
+      "details": {
+        "average_precision": {
+          "baseline": 0.7905906093748996,
+          "current": 0.7949110815504745,
+          "degradation": -0.004320472175574963,
+          "tolerance": 0.02,
+          "status": "accepter"
+        },
+        "roc_auc": {
+          "baseline": 0.979743836562574,
+          "current": 0.9787500699505032,
+          "degradation": 0.0009937666120708455,
+          "tolerance": 0.01,
+          "status": "accepter"
+        },
+        "recall": {
+          "baseline": 0.8617021276595744,
+          "current": 0.8936170212765957,
+          "degradation": -0.03191489361702127,
+          "tolerance": 0.03,
+          "status": "accepter"
+        },
+        "precision": {
+          "baseline": 0.7864077669902912,
+          "current": 0.6,
+          "degradation": 0.18640776699029127,
+          "tolerance": 0.05,
+          "status": "rejeter"
+        },
+        "fpr": {
+          "baseline": 0.0003883426594411396,
+          "current": 0.0009885085876683553,
+          "degradation": 0.0006001659282272157,
+          "tolerance": 0.001,
+          "status": "investiguer"
+        }
+      }
+    },
+    "v1.1-c : arbre de décision (profondeur 8)": {
+      "model": "tree",
+      "params": {
+        "max_depth": 8,
+        "min_samples_leaf": 20
+      },
+      "threshold": 0.9941852642662851,
+      "metrics_val": {
+        "average_precision": 0.6948776646716154,
+        "roc_auc": 0.919081445671275,
+        "recall": 0.776595744680851,
+        "precision": 0.776595744680851,
+        "fpr": 0.00037069072037563324,
+        "f1": 0.776595744680851,
+        "tp": 73,
+        "fp": 21,
+        "fn": 21
+      },
+      "decision": "rejeter",
+      "details": {
+        "average_precision": {
+          "baseline": 0.7905906093748996,
+          "current": 0.6948776646716154,
+          "degradation": 0.09571294470328418,
+          "tolerance": 0.02,
+          "status": "rejeter"
+        },
+        "roc_auc": {
+          "baseline": 0.979743836562574,
+          "current": 0.919081445671275,
+          "degradation": 0.06066239089129899,
+          "tolerance": 0.01,
+          "status": "rejeter"
+        },
+        "recall": {
+          "baseline": 0.8617021276595744,
+          "current": 0.776595744680851,
+          "degradation": 0.08510638297872342,
+          "tolerance": 0.03,
+          "status": "rejeter"
+        },
+        "precision": {
+          "baseline": 0.7864077669902912,
+          "current": 0.776595744680851,
+          "degradation": 0.009812022309440227,
+          "tolerance": 0.05,
+          "status": "accepter"
+        },
+        "fpr": {
+          "baseline": 0.0003883426594411396,
+          "current": 0.00037069072037563324,
+          "degradation": -1.7651939065506383e-05,
+          "tolerance": 0.001,
+          "status": "accepter"
+        }
+      }
+    },
+    "v1.1-d : régression logistique, graine différente (contrôle)": {
+      "model": "logreg",
+      "params": {
+        "C": 0.01,
+        "random_state": 7
+      },
+      "threshold": 0.999392437718561,
+      "metrics_val": {
+        "average_precision": 0.7905906093748996,
+        "roc_auc": 0.979743836562574,
+        "recall": 0.8617021276595744,
+        "precision": 0.7864077669902912,
+        "fpr": 0.0003883426594411396,
+        "f1": 0.8223350253807107,
+        "tp": 81,
+        "fp": 22,
+        "fn": 13
+      },
+      "decision": "accepter",
+      "details": {
+        "average_precision": {
+          "baseline": 0.7905906093748996,
+          "current": 0.7905906093748996,
+          "degradation": 0.0,
+          "tolerance": 0.02,
+          "status": "accepter"
+        },
+        "roc_auc": {
+          "baseline": 0.979743836562574,
+          "current": 0.979743836562574,
+          "degradation": 0.0,
+          "tolerance": 0.01,
+          "status": "accepter"
+        },
+        "recall": {
+          "baseline": 0.8617021276595744,
+          "current": 0.8617021276595744,
+          "degradation": 0.0,
+          "tolerance": 0.03,
+          "status": "accepter"
+        },
+        "precision": {
+          "baseline": 0.7864077669902912,
+          "current": 0.7864077669902912,
+          "degradation": 0.0,
+          "tolerance": 0.05,
+          "status": "accepter"
+        },
+        "fpr": {
+          "baseline": 0.0003883426594411396,
+          "current": 0.0003883426594411396,
+          "degradation": 0.0,
+          "tolerance": 0.001,
+          "status": "accepter"
+        }
+      }
+    }
+  }
+}

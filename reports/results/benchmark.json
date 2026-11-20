@@ -1,0 +1,89 @@
+{
+  "environment": {
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "logical_cores": 2,
+    "ram_gb": 8.4,
+    "os": "Linux-6.18.44-fc-v726-x86_64-with-glibc2.39",
+    "python": "3.13.18",
+    "scikit_learn": "1.9.1",
+    "note": "conteneur Linux partagé ; mono-processus ; aucun autre calcul simultané"
+  },
+  "protocol": {
+    "warmup": 200,
+    "n_single": 2000,
+    "n_http": 1000,
+    "batch_repeats": 20,
+    "clock": "time.perf_counter"
+  },
+  "single": {
+    "pipeline_only": {
+      "p50_ms": 2.6748229999498108,
+      "p95_ms": 3.0994582999255726,
+      "p99_ms": 3.5150249199909918,
+      "mean_ms": 2.718786237000529,
+      "max_ms": 4.8000340000271535,
+      "n": 2000
+    },
+    "predict_fraud": {
+      "p50_ms": 7.819498000060321,
+      "p95_ms": 9.658260099951121,
+      "p99_ms": 12.136861040009988,
+      "mean_ms": 7.901105933498628,
+      "max_ms": 24.272049000046536,
+      "n": 2000
+    },
+    "request_handler_no_http": {
+      "p50_ms": 8.270525499995074,
+      "p95_ms": 10.373048350072622,
+      "p99_ms": 13.409119660008173,
+      "mean_ms": 8.263474456499692,
+      "max_ms": 36.323885999991035,
+      "n": 2000
+    },
+    "http_local": {
+      "p50_ms": 10.91282400000182,
+      "p95_ms": 13.4303975999444,
+      "p99_ms": 16.121642340058315,
+      "mean_ms": 10.98899942500043,
+      "max_ms": 37.26184899994678,
+      "n": 1000
+    }
+  },
+  "http_invalid_request_status": 400,
+  "throughput": {
+    "100": {
+      "median_s": 0.007645611499981442,
+      "p95_s": 0.008115051300001142,
+      "tx_per_s": 13079.398554352747
+    },
+    "1000": {
+      "median_s": 0.008756880499959152,
+      "p95_s": 0.009200920300020243,
+      "tx_per_s": 114195.91714248752
+    },
+    "10000": {
+      "median_s": 0.012014092500010065,
+      "p95_s": 0.012405158700062202,
+      "tx_per_s": 832355.8354483804
+    }
+  },
+  "model_size_mb": 0.003475,
+  "rss_mb": {
+    "before_load": 183.709696,
+    "after_load": 183.914496,
+    "peak_batch_56746": 275.02592
+  },
+  "criteria": {
+    "p95_single_ms_max": 20.0,
+    "throughput_min_per_s": 5000,
+    "model_size_mb_max": 5.0,
+    "rss_mb_max": 500.0
+  },
+  "checks": {
+    "p95_single_predict_fraud": true,
+    "p95_http_local": true,
+    "throughput_batch_1000": true,
+    "model_size": true,
+    "rss_peak": true
+  }
+}
