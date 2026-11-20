@@ -85,8 +85,8 @@ Méthode B vérifiée localement : **7 tests échouent**, 148 passent. Parmi eux
 
 | Preuve | Run | Déclenchement | Résultat |
 |---|---|---|---|
-| Exécution réussie | [tests #4](https://github.com/gbaderoga/AI-TestGuard/actions/runs/44655735480) | push sur `main`, commit `ef739e0` | ✅ `lint (ruff)` et `tests rapides` réussis ; `qualification complète` non déclenchée (normal, job manuel ou hebdomadaire) |
-| Échec volontaire détecté | [tests #5](https://github.com/gbaderoga/AI-TestGuard/actions/runs/44660626859) | lancement manuel (`workflow_dispatch`) avec `simulate_regression = true`, **même commit `ef739e0`** | ❌ `tests rapides` en échec (exit code 1) ; `lint` réussi |
+| Exécution réussie | [tests #4](https://github.com/gbaderoga/AI-TestGuard/actions/runs/44655735480) | push sur `main` | ✅ `lint (ruff)` et `tests rapides` réussis ; `qualification complète` non déclenchée (normal, job manuel ou hebdomadaire) |
+| Échec volontaire détecté | [tests #5](https://github.com/gbaderoga/AI-TestGuard/actions/runs/44660626859) | lancement manuel (`workflow_dispatch`) avec `simulate_regression = true`, **même commit** | ❌ `tests rapides` en échec (exit code 1) ; `lint` réussi |
 
 **Interprétation.** Les runs #4 et #5 portent sur le même code. Seule l'option `simulate_regression` les distingue : elle mélange les étiquettes d'entraînement. Le modèle dégradé est comparé à la baseline figée `tests/baselines/ci_baseline.json`, et les 3 tests de non-régression échouent avec le message « Régression détectée ». Tous les autres tests restent verts. La CI détecte donc précisément le défaut introduit et le signale clairement : job rouge, code de sortie non nul, message explicite.
 
