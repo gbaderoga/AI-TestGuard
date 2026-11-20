@@ -108,7 +108,7 @@
         "C": 0.01,
         "class_weight": null
       },
-      "threshold": 0.013902168370571026,
+      "threshold": 0.013902168370562991,
       "metrics_val": {
         "average_precision": 0.7949110815504745,
         "roc_auc": 0.9787500699505032,

@@ -21,8 +21,8 @@
   },
   "final_model": "logreg",
   "final_threshold": 0.999392437718561,
-  "model_sha256": "951e69d6bbc83277a21627e6f9c325ede5da5904b111f91883c836617e50424f",
-  "model_size_bytes": 3475,
+  "model_sha256": "a9f2b87b0e044c0a9526ae96895a44d42d939e4986991cf86aff02f8b7017eaa",
+  "model_size_bytes": 3473,
   "results": {
     "logreg": {
       "params": {
@@ -49,7 +49,7 @@
         }
       ],
       "threshold": 0.999392437718561,
-      "grid_search_seconds": 0.9769539030000942,
+      "grid_search_seconds": 1.059703333012294,
       "train": {
         "n": 170235,
         "n_fraud": 284,
@@ -201,7 +201,7 @@
         }
       ],
       "threshold": 0.9941852642662851,
-      "grid_search_seconds": 22.991390980999995,
+      "grid_search_seconds": 26.578661833016668,
       "train": {
         "n": 170235,
         "n_fraud": 284,
@@ -330,7 +330,7 @@
     },
     "FN": {
       "n": 21,
-      "proba_median": 0.17887849559619054,
+      "proba_median": 0.17887849559619967,
       "amount_median": 1.79,
       "amount_mean": 180.49238095238096
     },
@@ -342,7 +342,7 @@
     },
     "TN": {
       "n": 56629,
-      "proba_median": 0.022914617285106173,
+      "proba_median": 0.022914617285107942,
       "amount_median": 21.59,
       "amount_mean": 88.13904819085627
     },
